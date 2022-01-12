@@ -6,4 +6,8 @@ module.exports = {
     extend: {},
   },
   plugins: [],
+  fontFamily: {
+    'body': ['"Poppins"']
+  }
 }
+
