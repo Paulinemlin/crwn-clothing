@@ -1,9 +1,9 @@
 import React from 'react'
 import Directory from '../../components/directory/directory.component';
 
-const HomePage = () => (
+const HomePage = ({history}) => (
     <div className='homepage'>
-       <Directory />
+       <Directory history/>
     </div>
 )
 
