@@ -1,20 +1,29 @@
 import React, { Component } from "react";
-import { signInWithGoogle } from "../../firebase/firebase.utils";
+import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 import CustomButton from "../custom-button/custom-button.component";
 import FormInput from "../form-input.component.jsx/form-input";
 
 export class SignIn extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       email: "",
       password: "",
     };
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    this.setState({ email: "", password: "" });
+  handleSubmit = async (event) => {
+    event.preventDefault();
+    const { email, password } = this.state;
+
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      console.log("c long");
+      this.setState({ email: "", password: "" });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   handleChange = (e) => {
@@ -28,7 +37,7 @@ export class SignIn extends Component {
       <div className="p-2 w-1/2">
         <h2 className="text-xl font-bold">I already have a password</h2>
         <span>Sign in with your email and password</span>
-        <form  onSubmit={this.handleSubmit} action="">
+        <form onSubmit={this.handleSubmit} action="">
           <div className="mt-12">
             <FormInput
               type="text"
@@ -42,7 +51,7 @@ export class SignIn extends Component {
 
           <div className="flex flex-col">
             <FormInput
-              type="text"
+              type="password"
               name="password"
               label="password"
               value={this.state.password}
@@ -52,7 +61,7 @@ export class SignIn extends Component {
           </div>
 
           <div className="w-ful">
-            <CustomButton type="submit">Sign in</CustomButton>
+            <CustomButton onClick={this.handleSubmit}>Sign in</CustomButton>
             <CustomButton
               className="mb-2"
               isGoogleSignIn
