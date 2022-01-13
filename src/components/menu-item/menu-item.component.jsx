@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
   <div
     className={`
-    w-${size} h-64 menu-item m-4 text-white flex flex-col items-center justify-center border-2  overflow-hidden`}
+     w-64 h-64 menu-item m-4 text-white flex flex-col items-center justify-center border-2  overflow-hidden`}
     style={{
       backgroundImage: `url(${imageUrl})`,
       overflow: 'hidden'

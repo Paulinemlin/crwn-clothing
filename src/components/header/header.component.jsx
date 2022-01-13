@@ -15,9 +15,8 @@ const Header = ({currentUser}) => (
             <Link className='p-2 hover:text-green-500' to='/shop'>Shop</Link>
             <Link className='p-2 hover:text-green-500' to='/shop'>Contact</Link>
             {
-                currentUser ? (
-                    <div className='p-2 hover:text-green-500' onClick={() => auth.signOut()}>Sign Out</div>
-                )
+                currentUser ?
+                 ( <div className='p-2 hover:text-green-500' onClick={() => auth.signOut()}>Sign Out</div>)
                 : (<Link className='p-2 hover:text-green-500' to='/signin'>Sign In</Link>)
             }
         </div>
