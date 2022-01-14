@@ -1,26 +1,41 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-import {auth} from '../../firebase/firebase.utils'
+import { auth } from "../../firebase/firebase.utils";
 
-import { ReactComponent as Logo } from '../../assets/logo.svg'
+import { ReactComponent as Logo } from "../../assets/logo.svg";
 
-const Header = ({currentUser}) => (
-    
-    <div className="header flex p-2 bg-white items-center justify-between">
-        <Link to='/'>
-           <Logo />
-        </Link>
-        <div className='options-container'>
-            <Link className='p-2 hover:text-green-500' to='/shop'>Shop</Link>
-            <Link className='p-2 hover:text-green-500' to='/shop'>Contact</Link>
-            {
-                currentUser ?
-                 ( <div className='p-2 hover:text-green-500' onClick={() => auth.signOut()}>Sign Out</div>)
-                : (<Link className='p-2 hover:text-green-500' to='/signin'>Sign In</Link>)
-            }
+const Header = ({ currentUser }) => (
+  <div className="header bg-blue-200 flex p-2 bg-white items-center justify-between">
+    <Link to="/">
+      <Logo />
+    </Link>
+    <div className="options-container flex w-2/3 bg-green-300">
+      <Link className="p-2 hover:text-green-500" to="/shop">
+        Shop
+      </Link>
+      <Link className="p-2 hover:text-green-500" to="/shop">
+        Contact
+      </Link>
+      { currentUser ? (
+        <div
+          className="p-2 hover:text-green-500 cursor-pointer"
+          onClick={() => auth.signOut()}>
+          Sign Out
         </div>
+      ) : (
+        <Link className="p-2 hover:text-green-500" to="/signin">
+          Sign in
+        </Link>
+      )}
     </div>
-)
+  </div>
+);
 
-export default Header
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(Header);
+

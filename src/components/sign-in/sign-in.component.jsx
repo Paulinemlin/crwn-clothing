@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 import CustomButton from "../custom-button/custom-button.component";
 import FormInput from "../form-input.component.jsx/form-input";
-
 export class SignIn extends Component {
   constructor(props) {
     super(props);
@@ -65,6 +64,7 @@ export class SignIn extends Component {
             <CustomButton
               className="mb-2"
               isGoogleSignIn
+              type="button"
               onClick={signInWithGoogle}
             >
               Sign in with Google
