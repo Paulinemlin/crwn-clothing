@@ -7,9 +7,9 @@ const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
      w-64 h-64 menu-item m-4 text-white flex flex-col items-center justify-center border-2  overflow-hidden`}
     style={{
       backgroundImage: `url(${imageUrl})`,
-      overflow: 'hidden'
+      overflow: "hidden",
     }}
-  onClick={() => history.push(`${match.url}${linkUrl}`)}
+    onClick={() => history.push(`${match.url}${linkUrl}`)}
   >
     <div className="content flex flex-col justify-center align-center items-center absolute">
       <h1 className="bg-pink-400 m-3 text-xl font-bold">{title}</h1>
