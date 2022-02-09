@@ -19,22 +19,29 @@ const CollectionItem = ({ item, addItem }) => {
         backgroundSize: "cover",
       }}
     >
-      <div className="collection-footer bg-white flex justify-between p-2">
-        <span>{name}</span>
-        <span>{price}</span>
-        <CustomButton onClick={() => addItem(item)} inverted>
-          Add to cart
-        </CustomButton>
+      <div
+        className="
+      collection-footer 
+      bg-white 
+      justify-between px-1 py-2"
+      >
+        <div className="flex justify-between">
+          {" "}
+          <span>{name}</span>
+          <span>{price}</span>
+        </div>
+        <div className="w-full">
+          <CustomButton inverted onClick={() => addItem(item)}>
+            Ajouter au panier
+          </CustomButton>
+        </div>
       </div>
     </div>
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  addItem: item => dispatch(addItem(item))
+const mapDispatchToProps = (dispatch) => ({
+  addItem: (item) => dispatch(addItem(item)),
 });
 
-export default connect(
-  null,
-  mapDispatchToProps
-  )(CollectionItem);
+export default connect(null, mapDispatchToProps)(CollectionItem);

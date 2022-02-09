@@ -19,13 +19,12 @@ export class SignUp extends Component {
   handleSubmit = async (event) => {
     event.preventDefault();
     const { displayName, email, password, confirmPassword } = this.state;
-    
+
     if (password !== confirmPassword) {
       alert("Passwords don't match");
       return;
-    }
-    else {
-        alert("ok")
+    } else {
+      alert("ok");
     }
     try {
       const { user } = await auth.createUserWithEmailAndPassword(
@@ -45,17 +44,16 @@ export class SignUp extends Component {
     }
   };
 
-
-  handleChange = event => {
-      const {name, value }= event.target;
-      this.setState({[name] : value})
-  }
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
 
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
     return (
-      <div>
-        <h2>I do not have an accont</h2>
+      <div className="p-2 w-1/3 container mx-auto max-w-5xl mt-12 ">
+        <h2 className="text-xl font-bold">Je souhaite m'inscrire</h2>
         <span>Sign Up with your email and password</span>
 
         <form action="form" onSubmit={this.handleSubmit}>
@@ -64,7 +62,7 @@ export class SignUp extends Component {
             name="displayName"
             value={displayName}
             onChange={this.handleChange}
-            label="Display Name"
+            label="Nom"
             required
           />
           <FormInput
@@ -80,7 +78,7 @@ export class SignUp extends Component {
             name="password"
             value={password}
             onChange={this.handleChange}
-            label="Password"
+            label="Mot de passe"
             required
           />
           <FormInput
@@ -88,11 +86,13 @@ export class SignUp extends Component {
             name="confirmPassword"
             value={confirmPassword}
             onChange={this.handleChange}
-            label="confirmPassword"
+            label="Confirmer mot de passe"
             required
           />
 
-          <CustomButton type="submit" onClick={this.handleSubmit}>Sign up</CustomButton>
+          <CustomButton type="submit" onClick={this.handleSubmit}>
+            S'inscrire
+          </CustomButton>
         </form>
       </div>
     );

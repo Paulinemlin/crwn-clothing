@@ -11,22 +11,22 @@ import {
 } from "../../redux/cart/cart.selectors";
 
 const CheckoutPage = ({ cartItems, total }) => (
-  <div className="checkout-page container mx-auto m-2 bg-white">
-    <div className="checkout-header flex border-b-2 justify-between px-4">
-      <div className="header-block">
-        <span>Product</span>
+  <div className="checkout-page container mx-auto max-w-5xl m-2 mt-12 bg-white">
+    <div className="checkout-header flex border-b-2 justify-between items-center font-bold px-4">
+      <div className="header-block p-3 ">
+        <span>Produit</span>
       </div>
-      <div className="header-block">
+      <div className="header-block pl-12">
         <span>Description</span>
       </div>
-      <div className="header-block">
-        <span>Quantity</span>
+      <div className="header-block pl-12">
+        <span>Quantité</span>
+      </div>
+      <div className="header-block pl-12">
+        <span>Prix</span>
       </div>
       <div className="header-block">
-        <span>Price</span>
-      </div>
-      <div className="header-block">
-        <span>Remove</span>
+        <span>Supprimer</span>
       </div>
     </div>
     {cartItems.map((cartItem) => (
@@ -34,10 +34,10 @@ const CheckoutPage = ({ cartItems, total }) => (
     ))}
     <div className="flex justify-end m-2">
       <div className="total px-4 ">
-        <span>TOTAL: ${total}</span>
+        <span>TOTAL: {total} €</span>
        
       </div>
-      <StripeCheckoutButton className="px-4" price={total} />
+      <StripeCheckoutButton className="px-12 " price={total} />
     </div>
   </div>
 );

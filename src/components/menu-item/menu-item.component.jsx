@@ -12,9 +12,9 @@ const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => (
     onClick={() => history.push(`${match.url}${linkUrl}`)}
   >
     <div className="content flex flex-col justify-center align-center items-center absolute">
-      <h1 className="bg-pink-400 m-3 text-xl font-bold">{title}</h1>
+      <h1 className=" m-3 text-xl font-bold">{title}</h1>
       <span
-        className=" bg-pink-400 border p-3
+        className="border p-3
             hover:bg-white hover:cursor-pointer hover:text-black"
       >
         Shop now

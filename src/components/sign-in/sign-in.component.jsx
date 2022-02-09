@@ -18,7 +18,6 @@ export class SignIn extends Component {
 
     try {
       await auth.signInWithEmailAndPassword(email, password);
-      console.log("c long");
       this.setState({ email: "", password: "" });
     } catch (error) {
       console.log(error);
@@ -33,16 +32,16 @@ export class SignIn extends Component {
 
   render() {
     return (
-      <div className="p-2 w-1/2">
-        <h2 className="text-xl font-bold">I already have a password</h2>
-        <span>Sign in with your email and password</span>
+      <div className="p-2 w-1/3 container mx-auto max-w-5xl mt-12 ">
+        <h2 className="text-xl font-bold">Welcome back</h2>
+        <span>Connectez-vous avec votre <strong>email</strong> et votre <strong>mot de passe</strong></span>
         <form onSubmit={this.handleSubmit} action="">
           <div className="mt-12">
             <FormInput
               type="text"
               name="email"
               value={this.state.email}
-              label="email"
+              label="Email"
               handleChange={this.handleChange}
               required
             />
@@ -60,14 +59,13 @@ export class SignIn extends Component {
           </div>
 
           <div className="w-ful">
-            <CustomButton onClick={this.handleSubmit}>Sign in</CustomButton>
+            <CustomButton onClick={this.handleSubmit}>Se connecter</CustomButton>
             <CustomButton
-              className="mb-2"
               isGoogleSignIn
               type="button"
               onClick={signInWithGoogle}
             >
-              Sign in with Google
+              Connexion avec Google
             </CustomButton>
           </div>
         </form>

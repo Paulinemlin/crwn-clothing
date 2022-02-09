@@ -8,9 +8,9 @@ const CollectionPage = ({ collection }) => {
   const { title, items } = collection;
 
   return (
-    <div className="collection-page">
-      <h2 className="title text-center mt-2 text-xl ">{title}</h2>
-      <div className="items flex">
+    <div className="collection-page container mx-auto max-w-5xl">
+      <h2 className="title text-center mt-12 mb-4 text-xl ">{title}</h2>
+      <div className="items flex text-uppercase">
         {items.map((item) => (
           <CollectionItem key={item.id} item={item} />
         ))}

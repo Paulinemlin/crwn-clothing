@@ -7,7 +7,8 @@ import { selectDirectorySections } from "../../redux/directory/directory.selecto
 import { connect } from "react-redux";
 
 const Directory = ({ sections }) => (
-  <div className="directory-menu container mx-auto flex flex-wrap flex-row justify-center items-center">
+  <div className="
+    flex flex-wrap flex-row justify-center items-center">
     {sections.map(({ id, ...othersectionProps }) => (
       <MenuItem key={id} {...othersectionProps} />
     ))}

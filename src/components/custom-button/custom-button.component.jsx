@@ -5,14 +5,15 @@ const CustomButton = ({ children, isGoogleSignIn, inverted, ...otherProps }) => 
     {...otherProps}
     type="button"
     className={`
-    m-2 inline-flex items-center 
+    mt-4 mr-4  
     px-4 py-2 border border-transparent
-    text-base font-medium rounded-md shadow-sm text-white 
-    hover:bg-yellow-500 focus:outline-none focus:ring-2 
-    focus:ring-offset-2 focus:ring-yellow-500 
+    text-base font-medium shadow-sm 
+    text-center text-white 
+    hover:bg-gray-800 focus:outline-none focus:ring-2 
+    focus:ring-offset-2 focus:ring-gray-500 
 
-    ${isGoogleSignIn ? "bg-blue-600" : "bg-green-200"}
-    ${inverted ? " bg-white text-black border-1-solid hover:block hover:bg-black hover:text-white" : ""}
+    ${isGoogleSignIn ? "bg-blue-600 hover:bg-blue-800" : "bg-gray-800"}
+    ${inverted ? "bg-gray-800 hover:bg-gray-900 w-full text-center   hover:block" : ""}
     
     `}
   >

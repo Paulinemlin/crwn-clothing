@@ -11,20 +11,22 @@ const CheckoutItem = ({ cartItem, clearItem, addItem, removeItem }) => {
   const { name, imageUrl, price, quantity } = cartItem;
   return (
     <div
-      className="checkout-item flex items-center mb-2 
+      className="checkout-item  flex border-b-2 items-center justify-between  
      border-b-2 justify-between p-4
     
     "
     >
-      <div className="w-1/6 image-container">
+      <div className="w-1/12 image-container">
         <img src={imageUrl} alt="" />
       </div>
       <span className="p-2 name">{name}</span>
-      <span onClick={() => removeItem(cartItem)}>&#10094;</span>
-      <span className="p-2 quantity">{quantity}</span>
-      <span onClick={() => addItem(cartItem)}>&#10095;</span>
+      <div className="quantity">
+      <span className="cursor-pointer" onClick={() => removeItem(cartItem)}>&#10094;</span>
+      <span className="p-3">{quantity}</span>
+      <span className="cursor-pointer" onClick={() => addItem(cartItem)}>&#10095;</span>
+      </div>
       <span className="p-2 price">{price}</span>
-      <span className="p-2 remove-button" onClick={() => clearItem(cartItem)}>
+      <span className="p-2 font-bold remove-button" onClick={() => clearItem(cartItem)}>
         &#10005;
       </span>
     </div>

@@ -12,27 +12,28 @@ import { selectCartHidden } from "../../redux/cart/cart.selectors";
 
 
 const Header = ({ currentUser, hidden }) => (
-  <div className="header relative  flex p-2 bg-white items-center justify-between">
+  <div className="bg-white">
+    <div className="header container mx-auto max-w-5xl relative  flex p-2 bg-white items-center justify-between">
     <Link to="/">
       <Logo />
     </Link>
     <div className="options-container flex w-2/3 justify-end">
       <Link className="p-2 hover:text-green-500" to="/shop">
-        Shop
+        Boutique
       </Link>
       <Link className="p-2 hover:text-green-500" to="/shop">
         Contact
       </Link>
-      {currentUser ? (
+      { (currentUser) ? (
         <div
           className="p-2 hover:text-green-500 cursor-pointer"
           onClick={() => auth.signOut()}
         >
-          Sign Out
+          Se déconnecter
         </div>
       ) : (
         <Link className="p-2 hover:text-green-500" to="/signin">
-          Sign in
+          Se connecter
         </Link>
       )}
       <CartIcon />
@@ -41,6 +42,7 @@ const Header = ({ currentUser, hidden }) => (
       hidden ? null : 
       <CartDropDown />
     }
+  </div>
   </div>
 );
 
