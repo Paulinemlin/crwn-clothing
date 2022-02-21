@@ -1,6 +1,7 @@
 import firebase from "firebase/compat/app";
 import "firebase/compat/firestore";
 import "firebase/compat/auth";
+import { reject } from "lodash";
 
 const config = {
   apiKey: "AIzaSyC4EFb_VZ-eWma4LkjaFI9fahgocp1l5DU",
@@ -59,7 +60,7 @@ export const addCollectionsAndDocuments = async (
   return await batch.commit();
 };
 
-export const convertCollectionsSnapshotToMap = collectionSnapshot => {
+export const convertCollectionsSnapshotToMap = (collectionSnapshot) => {
   const transformedCollection = collectionSnapshot.docs.map((docSnapshot) => {
     const { title, items } = docSnapshot.data();
 
@@ -76,11 +77,20 @@ export const convertCollectionsSnapshotToMap = collectionSnapshot => {
   }, {});
 };
 
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = auth.onAuthStateChanged((userAuth) => {
+      unsubscribe();
+      resolve(userAuth);
+    }, reject);
+  });
+};
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
-provider.setCustomParameters({ prompt: "select_account" });
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;
